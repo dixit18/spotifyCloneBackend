@@ -20,6 +20,14 @@ app.use('/api/auth', authRoutes);
 app.use('/api/playlists', authenticate, playlistRoutes);
 app.use('/api/spotify', authenticate, spotifyRoutes);
 
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
